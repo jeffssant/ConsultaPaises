@@ -32,9 +32,11 @@ export class PorPaisComponent {
         this.hayError = true;
         this.paises = [];
       }
-
     )
+  }
 
+  sugerencias(termino: string) {
+    this.hayError = false;
   }
  
 }
