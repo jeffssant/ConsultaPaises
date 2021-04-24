@@ -1,10 +1,10 @@
-<div class="alert alert-info" *ngIf="!pais; else divPais">
+<div class="alert alert-info" *ngIf="!pais && !hayError; else divPais">
     Espere por favor...
 </div>
 
 
 <ng-template #divPais class="animate__animated animate__fadeIn">
-    <div class="animate__fadeIn animate__animated">
+    <div class="animate__fadeIn animate__animated" *ngIf="!hayError">
         <div class="row">
             <div class="col-12">
             <h1>País: <small>{{pais.name}}</small></h1>
@@ -50,6 +50,10 @@
 
             </div>
         </div>
+    </div>
+
+    <div *ngIf="hayError" class="alert alert-danger">
+        No se encontró nada con la abreviatura {{pais}}
     </div>
 </ng-template>
 

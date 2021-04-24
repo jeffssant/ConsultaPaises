@@ -13,6 +13,7 @@ import { Country } from '../../interfaces/pais.interface';
 })
 export class VerPaisComponent implements OnInit {
   pais!: Country;
+  hayError: boolean = false;
 
   constructor(
     private activateRoute: ActivatedRoute,
@@ -25,6 +26,9 @@ export class VerPaisComponent implements OnInit {
       switchMap(({id})=> this.PaisService.getPaisPorAlpha(id)),
       tap(console.log)
     )
-    .subscribe(pais => this.pais = pais)
+    .subscribe(
+      pais => this.pais = pais,
+      (err) => this.hayError = true
+      )
   }
 }
